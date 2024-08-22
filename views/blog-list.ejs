@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="h-screen bg-gray-200 p-6">
+    <%- include('../partials/loginnav.ejs') %>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h1 class="text-3xl font-bold mb-4">Blog List</h1>
+        <a href="/blogs/add" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mb-4 inline-block">Add New Blog</a>
+        <table class="w-full table-auto bg-white rounded-lg shadow-md">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Title</th>
+                    <th class="px-4 py-2">Image</th>
+                    <th class="px-4 py-2">Description</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% blogs.forEach(blog => { %>
+                    <tr class="text-center">
+                        <td class="border px-4 py-2"><%= blog.title %></td>
+                        <td class="border px-4 py-2">
+                            <% if (blog.image) { %>
+                                <img src="/<%= blog.image %>" alt="Blog Image" class="w-16 h-16">
+                            <% } %>
+                        </td>
+                        <td class="border px-4 py-2"><%= blog.description %></td>
+                        <td class="border px-4 py-2">
+                            <a href="/blogs/edit/<%= blog._id %>" class="text-blue-500">Edit</a>
+                            <form action="/blogs/delete/<%= blog._id %>" method="POST" class="inline">
+                                <button type="submit" class="text-red-500 ml-4">Delete</button>
+                            </form>
+                            <a href="/blogs/<%= blog._id %>" class="text-green-500 ml-4">View</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

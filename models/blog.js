@@ -5,4 +5,6 @@ const BlogSchema = new mongoose.Schema({
     description: { type: String, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
+// Delete the existing model if it exists
+// delete mongoose.models.Blog;
 module.exports = mongoose.model('Blog', BlogSchema);

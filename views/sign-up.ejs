@@ -11,15 +11,17 @@
                     placeholder="Enter email"><br><br>
             </div>
 
-            <div class="bg-white border-[1px] rounded-full flex items-center justify-start p-2 w-1/2 overflow-hidden">
+            <div class="bg-white border-[1px] rounded-full flex items-center justify-start p-2 w-1/2 overflow-hidden relative">
 
                 <i class="ri-lock-fill text-2xl text-black"></i>
-                <input type="password" name="password" required class="w-full h-full outline-none border-none pl-2 text-black" placeholder="Enter password"><br><br>
+                <input type="password" id="password" name="password" required class="w-full h-full outline-none border-none pl-2 text-black" placeholder="Enter password">
+                <i id="togglePassword" class="ri-eye-off-fill absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"></i>
+                <br><br>
             </div>
             <div class=" border-[1px] border-dashed rounded-xl flex items-center justify-start p-2 w-1/2 overflow-hidden ">
 
                 <i class="ri-file-image-fill text-2xl text-black"></i>
-                <input type="file" name="profileImage"><br><br>
+                <input type="file" name="profileImage" class="pl-2"><br><br>
             </div>
 
             <button type="submit" class="border-2 px-4 py-2 rounded-full hover:bg-green-300 hover:border-black hover:text-black font-semibold">Sign Up</button>

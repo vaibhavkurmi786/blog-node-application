@@ -18,6 +18,9 @@ const upload = multer({ storage });
 router.get('/', (req, res) => {
     res.render('index'); // Render the 'index.ejs' file from the 'views' directory
   });
+router.get('/index', (req, res) => {
+    res.render('index'); // Render the 'index.ejs' file from the 'views' directory
+  });
 
 // Serve login page
 router.get('/login', (req, res) => {
@@ -42,14 +45,37 @@ router.post('/sign-up', upload.single('profileImage'), async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    console.log("what are the email and password", email, password);
+    
     const user = await User.findOne({ email });
+    console.log("user", user);
+    
     if (user && await bcrypt.compare(password, user.password)) {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.cookie('token', token);
-        res.redirect('/dashboard');
+        res.cookie('token', token, { httpOnly: true });
+        return res.redirect('/dashboard');
     } else {
         res.status(401).send('Invalid credentials');
     }
 });
+
+// router.get('/dashboard', async (req, res) => {
+//     try {
+//         // Assuming you have user authentication and JWT setup
+//         const token = req.cookies.token;
+//         console.log("Token: " + token);
+        
+//         if (!token) {
+//             return res.redirect('/login');
+//         }
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//         const user = await User.findById(decoded.id);
+//         res.render('dashboard', { user });
+//     } catch (error) {
+//         res.status(500).send('Server Error');
+//     }
+// });
+
+
 
 module.exports = router;

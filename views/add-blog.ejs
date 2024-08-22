@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/loginnav.ejs') %>
+
+<div class="flex justify-center items-center min-h-screen bg-gray-200">
+    <form action="/blogs/add" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md w-1/3">
+        <h2 class="text-2xl font-bold mb-4">Add New Blog</h2>
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700">Blog Title:</label>
+            <input type="text" name="title" id="title" class="w-full px-3 py-2 border rounded-lg focus:outline-none" required>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Blog Description:</label>
+            <textarea name="description" id="description" class="w-full px-3 py-2 border rounded-lg focus:outline-none" required></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700">Blog Image:</label>
+            <input type="file" name="image" id="image" class="w-full px-3 py-2 border rounded-lg focus:outline-none">
+        </div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Add Blog</button>
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

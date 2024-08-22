@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+<div class="min-h-screen bg-gray-200 p-6">
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h1 class="text-3xl font-bold mb-4"><%= blog.title %></h1>
+        <% if (blog.image) { %>
+            <img src="<%= blog.image %>" alt="Blog Image" class="w-full h-auto mb-4 rounded-lg">
+        <% } %>
+        <p><%= blog.description %></p>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

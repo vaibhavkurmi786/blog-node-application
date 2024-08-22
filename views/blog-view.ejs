@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="min-h-screen bg-gray-200 p-6">
+    <%- include('../partials/loginnav.ejs') %>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h1 class="text-3xl font-bold mb-4"><%= blog.title %></h1>
+        <% if (blog.image) { %>
+            <img src="/<%= blog.image %>" alt="Blog Image" class="w-full h-auto mb-4 rounded-lg">
+        <% } %>
+        <p class="text-gray-700"><%= blog.description %></p>
+        
+        <h2 class="text-2xl font-bold mt-6 mb-4">Comments</h2>
+        <% if (comments.length > 0) { %>
+            <% comments.forEach(comment => { %>
+                <div class="mb-4">
+                    <p class="text-gray-900 font-semibold"><%= comment.user.email %></p>
+                    <p class="text-gray-700"><%= comment.text %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No comments yet. Be the first to comment!</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

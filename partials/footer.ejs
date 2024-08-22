@@ -1,3 +1,19 @@
+<footer class="bg-gray-800 text-white text-center p-4 ">
+    <p>&copy; 2024 Blog Application. All rights reserved.</p>
+</footer>
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
 
+    togglePassword.addEventListener('click', function () {
+        // Toggle the type attribute using a ternary operator
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        // Toggle the eye icon
+        this.classList.toggle('ri-eye-fill');
+        this.classList.toggle('ri-eye-off-fill');
+    });
+</script>
 </body>
 </html>
