@@ -31,12 +31,11 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 
 // Routes
 app.use('/', Routes);
-console.log("did redirection come back" );
 app.use('/dashboard', dashboardRoutes);
-console.log("did redirection go back" );
-
 app.use('/blogs', blogRoutes);
 app.use('/comments', commentRoutes);
+
+
 
 // Start the server
 app.listen(port, () => {

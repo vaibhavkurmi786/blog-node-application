@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Blog = require("../models/Blog");//+
 const upload = require("../Utils/multer")
+const Comment = require("../models/Comment")
 
 // Serve add blog page
 router.get('/add', (req, res) => {
@@ -21,10 +22,18 @@ router.get('/', async (req, res) => {
 // Serve specific blog
 router.get('/:id', async (req, res) => {
     try {
+        console.log("Fetching blog with ID:", req.params.id);
         const blog = await Blog.findById(req.params.id);
+        if (!blog) {
+            console.log("Blog not found:", req.params.id);
+            return res.status(404).send('Blog not found');
+        }
+        console.log("Fetched blog:", blog);
         const comments = await Comment.find({ blogId: req.params.id }).populate('user');
+        console.log("Fetched comments:", comments);
         res.render('blog-view', { blog, comments });
     } catch (error) {
+        console.error("Error in GET /:id route:", error); // Detailed error log
         res.status(500).send('Server Error');
     }
 });
@@ -63,7 +72,7 @@ router.get('/edit/:id', async (req, res) => {
 
 
 // Edit blog
-router.post('/edit/:id', async (req, res) => {
+router.post('/edit/:id',upload, async (req, res) => {
     try {
         console.log("this is req body",req.body);
         
@@ -87,5 +96,6 @@ router.post('/delete/:id', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
 
 module.exports = router;

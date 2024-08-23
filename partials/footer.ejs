@@ -2,6 +2,11 @@
     <p>&copy; 2024 Blog Application. All rights reserved.</p>
 </footer>
 <script>
+    function logout() {
+        // Remove token from localStorage or sessionStorage
+        localStorage.removeItem('authToken'); // or sessionStorage.removeItem('authToken');
+        window.location.href = '/login'; // Redirect to login page
+    }
     const togglePassword = document.getElementById('togglePassword');
     const passwordInput = document.getElementById('password');
 

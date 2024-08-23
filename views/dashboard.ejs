@@ -1,16 +1,16 @@
 <%- include('../partials/header.ejs') %>
-    <div class="w-screen h-screen bg-gray-600 flex items-center justify-start flex-col gap-5 text-white">
+    <div class="w-screen min-h-screen bg-gray-600 flex items-center justify-center flex-col gap-5 text-white overflow-hidden">
 
-        <div class="bg-green-300 w-full  flex items-center justify-between p-3">
+        <h2 class="text-3xl font-semibold">Welcome to your Dashboard</h2>
+        <div class=" flex flex-col items-center justify-between p-3">
             
-            <img src="<%= user.profileImage %>" alt="Profile Image" style="width: 100px; height: 100px;"><br><br>
-            <div class="mr-3">
+            <img src="<%= user.profileImage %>" alt="Profile Image" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid black;"><br><br>
+            <div class="flex gap-5">
                 
                 <a href="/blogs/add" class="underline">Add New Blog</a>
                 <a href="/blogs" class="underline">View Blogs</a>
             </div>
         </div>
-        <h2 class="text-3xl font-semibold">Welcome to your Dashboard</h2>
 
     </div>
     <%- include('../partials/footer.ejs') %>
